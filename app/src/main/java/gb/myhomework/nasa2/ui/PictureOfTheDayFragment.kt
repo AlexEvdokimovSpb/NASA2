@@ -13,11 +13,11 @@ import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
 import gb.myhomework.nasa2.R
 import gb.myhomework.nasa2.model.repo.PictureOfTheDayData
 import gb.myhomework.nasa2.viewmodel.PictureOfTheDayViewModel
 import kotlinx.android.synthetic.main.main_fragment.*
-
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -42,7 +42,10 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
         setBottomAppBar(view)
-        viewModel.getData()
+
+        initChipGroup()
+
+        viewModel.getData(0)
             .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
     }
 
@@ -80,6 +83,10 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+                    bottom_sheet_title.text = serverResponseData.title
+                    bottom_sheet_date.text = serverResponseData.date
+                    bottom_sheet_copyright.text = serverResponseData.copyright
+                    bottom_sheet_explanation.text = serverResponseData.explanation
                 }
             }
             is PictureOfTheDayData.Loading -> {
@@ -126,8 +133,39 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
+    private fun initChipGroup() {
+        chipGroup.setOnCheckedChangeListener { chipGroup, position ->
+            chipGroup.findViewById<Chip>(position)?.let {
+                when (it.id) {
+                    R.id.chip_day_before_yesterday -> {
+                        viewModel.getData(DAY_BEFORE_YESTERDAY)
+                            .observe(
+                                viewLifecycleOwner,
+                                Observer<PictureOfTheDayData> { renderData(it) })
+                    }
+                    R.id.chip_yesterday -> {
+                        viewModel.getData(YESTERDAY)
+                            .observe(
+                                viewLifecycleOwner,
+                                Observer<PictureOfTheDayData> { renderData(it) })
+                    }
+                    R.id.chip_today -> {
+                        viewModel.getData(TODAY)
+                            .observe(
+                                viewLifecycleOwner,
+                                Observer<PictureOfTheDayData> { renderData(it) })
+                    }
+                }
+            }
+        }
+    }
+
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
         private var isMain = true
+
+        private val TODAY = 0
+        private val YESTERDAY = 1
+        private val DAY_BEFORE_YESTERDAY = 2
     }
 }

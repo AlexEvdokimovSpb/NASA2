@@ -10,25 +10,29 @@ import gb.myhomework.nasa2.model.repo.PictureOfTheDayData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    fun getData(): LiveData<PictureOfTheDayData> {
-        sendServerRequest()
+    private var date: String = "2021-01-01"
+
+    fun getData(delayDay : Int): LiveData<PictureOfTheDayData> {
+        sendServerRequest(delayDay)
         return liveDataForViewToObserve
     }
 
-    private fun sendServerRequest() {
+    private fun sendServerRequest(delayDay : Int) {
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
         val apiKey: String = BuildConfig.NASA_APOD_API_KEY
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(object :
+           // val delayDay = 1
+            date = setData(delayDay)
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(object :
                 Callback<PODServerResponseData> {
                 override fun onResponse(
                     call: Call<PODServerResponseData>,
@@ -55,4 +59,15 @@ class PictureOfTheDayViewModel(
             })
         }
     }
+
+    private fun setData(delayDay: Int) : String {
+        val today = GregorianCalendar()
+        val newDate = StringBuilder() // Месяц отсчитывается с 0, поэтому добавляем 1
+            .append(today.get(GregorianCalendar.YEAR)).append("-")
+            .append(today.get(GregorianCalendar.MONTH) + 1).append("-")
+            .append(today.get(GregorianCalendar.DAY_OF_MONTH) - delayDay)
+            .toString()
+        return  newDate
+    }
+
 }
