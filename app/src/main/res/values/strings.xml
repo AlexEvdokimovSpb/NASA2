@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">NASA2</string>
+
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="search_wiki">Find in Wikipedia</string>
+    <string name="wiki_helper_text">Search for the term in Wikipedia</string>
+    <string name="favourite">favourite</string>
+    <string name="settings">settings</string>
+    <string name="search">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="day_before_yesterday">day before yesterday</string>
+    <string name="choice">Choice</string>
 </resources>

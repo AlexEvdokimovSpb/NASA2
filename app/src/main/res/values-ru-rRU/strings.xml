@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NASA2</string>
+    <string name="photo_of_the_day_stub">Картина дня</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в Википедии</string>
+    <string name="today">сегодня</string>
+    <string name="yesterday">вчера</string>
+    <string name="day_before_yesterday">позавчера</string>
+    <string name="search">Поиск</string>
+    <string name="settings">настройки</string>
+    <string name="favourite">понравилось</string>
+    <string name="choice">Выбор</string>
+</resources>
