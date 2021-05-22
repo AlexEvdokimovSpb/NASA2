@@ -11,4 +11,8 @@
     <string name="settings">настройки</string>
     <string name="favourite">понравилось</string>
     <string name="choice">Выбор</string>
+    <string name="light">светлая</string>
+    <string name="dark">темная</string>
+    <string name="tropic">тропическая</string>
+    <string name="choice_a_theme">выбор темы</string>
 </resources>

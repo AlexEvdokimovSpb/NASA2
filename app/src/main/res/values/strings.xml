@@ -14,4 +14,8 @@
     <string name="yesterday">yesterday</string>
     <string name="day_before_yesterday">day before yesterday</string>
     <string name="choice">Choice</string>
+    <string name="light">light</string>
+    <string name="dark">dark</string>
+    <string name="tropic">tropic</string>
+    <string name="choice_a_theme">choice a theme</string>
 </resources>

@@ -30,7 +30,6 @@ class PictureOfTheDayViewModel(
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-           // val delayDay = 1
             date = setData(delayDay)
             retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(object :
                 Callback<PODServerResponseData> {

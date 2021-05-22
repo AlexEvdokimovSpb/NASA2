@@ -7,11 +7,27 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="tropic">#AEEA00</color>
+    "#FFFFFF"
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#2962FF</color>
     <color name="color_gray">#66000000</color>
-    <color name="background">#FAFAFA</color>
 
+    <color name="background">#FAFAFA</color>
+    <color name="background_dark">#1A237E</color>
+    <color name="background_tropic">#827717</color>
+
+    <color name="text_light">@color/black</color>
+    <color name="text_dark">#FAFAFA</color>
+    <color name="text_tropic">#64DD17</color>
+
+    <color name="chips_tropic_background">#FF6D00</color>
+    <color name="chips_tropic_surface">#AEEA00</color>
+    <color name="chips_tropic_text">#00BFA5</color>
+
+    <color name="tropic_fab_background">#FF6D00</color>
+    <color name="tropic_fab_tint">#2962FF</color>
+
+    <color name="light_fab_tint">#FFFFFF</color>
 </resources>

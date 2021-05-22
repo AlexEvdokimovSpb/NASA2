@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(ui.root)
+        setTheme(ThemeHolder.theme)
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -20,4 +21,9 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
+    object ThemeHolder{
+        var theme = R.style.Theme_NASA2
+    }
+
 }
