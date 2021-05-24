@@ -8,8 +8,6 @@
     <string name="settings">settings</string>
     <string name="search">Search</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="today">today</string>
     <string name="yesterday">yesterday</string>
     <string name="day_before_yesterday">day before yesterday</string>
@@ -18,4 +16,5 @@
     <string name="dark">dark</string>
     <string name="tropic">tropic</string>
     <string name="choice_a_theme">choice a theme</string>
+    <string name="there_will_be_something_here_soon">There will be something here soon</string>
 </resources>
