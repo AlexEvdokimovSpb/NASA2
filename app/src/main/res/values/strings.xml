@@ -16,5 +16,9 @@
     <string name="dark">dark</string>
     <string name="tropic">tropic</string>
     <string name="choice_a_theme">choice a theme</string>
-    <string name="there_will_be_something_here_soon">There will be something here soon</string>
+    <string name="pull_me_down">Pull me down!</string>
+    <string name="apod_video">video</string>
+    <string name="bye_earthlings">Bye Earthlings!</string>
+    <string name="motion">motion</string>
+
 </resources>

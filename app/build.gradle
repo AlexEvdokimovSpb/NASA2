@@ -36,7 +36,7 @@ android {
     buildTypes.each {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("apikey.properties").newDataInputStream())
-        def apiKey  = properties.getProperty("nasaApodApiKey", "")
+        def apiKey = properties.getProperty("nasaApodApiKey", "")
         it.buildConfigField "String", "NASA_APOD_API_KEY", apiKey
     }
 
@@ -67,6 +67,8 @@ dependencies {
     //RXJava
     implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    //Video
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

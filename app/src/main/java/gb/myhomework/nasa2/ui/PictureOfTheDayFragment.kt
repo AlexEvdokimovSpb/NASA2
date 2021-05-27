@@ -3,22 +3,33 @@ package gb.myhomework.nasa2.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import coil.api.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import gb.myhomework.nasa2.R
 import gb.myhomework.nasa2.model.repo.PictureOfTheDayData
 import gb.myhomework.nasa2.viewmodel.PictureOfTheDayViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import kotlinx.android.synthetic.main.picture_of_day_fragment.*
 
-class PictureOfTheDayFragment(var delayDay: Int) : Fragment() {
+private const val DELAY = "delay"
+
+class PictureOfTheDayFragment : Fragment() {
+
+    private var delayDay: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            delayDay = it.getInt(DELAY)
+        }
+    }
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PictureOfTheDayViewModel by lazy {
@@ -55,11 +66,18 @@ class PictureOfTheDayFragment(var delayDay: Int) : Fragment() {
                     toast("Link is empty")
                 } else {
                     //showSuccess()
-                    image_view.load(url) {
-                        lifecycle(this@PictureOfTheDayFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
-                    }
+                    childFragmentManager
+                        .beginTransaction()
+                        .replace(
+                            R.id.child_fragment_container,
+                            if (serverResponseData.mediaType == "image") {
+                                PictureFragment.newInstance(url)
+                            } else { //mediaType =="video"
+                                VideoFragment.newInstance(url)
+                            }
+                        )
+                        .commit()
+
                     bottom_sheet_title.text = serverResponseData.title
                     bottom_sheet_date.text = serverResponseData.date
                     bottom_sheet_copyright.text = serverResponseData.copyright
@@ -86,6 +104,16 @@ class PictureOfTheDayFragment(var delayDay: Int) : Fragment() {
             setGravity(Gravity.BOTTOM, 0, 250)
             show()
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(delayDay: Int) =
+            PictureOfTheDayFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(DELAY, delayDay)
+                }
+            }
     }
 
 }

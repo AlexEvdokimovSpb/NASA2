@@ -7,8 +7,8 @@
 
     <item
         android:id="@+id/bottom_view_fav"
-        android:icon="@drawable/ic_favourite_menu"
-        android:title="@string/favourite" />
+        android:icon="@drawable/ic_ufo"
+        android:title="@string/motion" />
 
     <item
         android:id="@+id/bottom_view_settings"

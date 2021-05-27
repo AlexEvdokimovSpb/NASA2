@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.bottom_view_fav -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.activity_api_bottom_container, ToDoFragment())
+                        .replace(R.id.activity_api_bottom_container, MotionFragment())
                         .commitAllowingStateLoss()
                 }
                 R.id.bottom_view_settings -> {
