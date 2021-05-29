@@ -30,4 +30,8 @@
     <color name="tropic_fab_tint">#2962FF</color>
 
     <color name="light_fab_tint">#FFFFFF</color>
+
+    <color name="tropic_tab_background">#D5EC95</color>
+    <color name="dark_tab_background">#3D415C</color>
+
 </resources>

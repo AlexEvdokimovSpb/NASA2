@@ -32,6 +32,7 @@
         <item name="chipGroupStyle">@style/tropic_chips_style</item>
         <item name="floatingActionButtonStyle">@style/tropic_fab_style</item>
         <item name="colorOnSurface">@color/background_tropic</item>
+        <item name="colorSurface">@color/tropic_tab_background</item>
     </style>
 
     <style name="Theme.NASA2.Dark" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -50,6 +51,7 @@
         <item name="chipGroupStyle">@style/dark_chips_style</item>
         <item name="floatingActionButtonStyle">@style/dark_fab_style</item>
         <item name="colorOnSurface">@color/background_dark</item>
+        <item name="colorSurface">@color/dark_tab_background</item>
     </style>
 
 </resources>
