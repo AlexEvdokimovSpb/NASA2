@@ -16,16 +16,14 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp">
 
-            <gb.myhomework.nasa2.util.EquilateralImageView
-                android:id="@+id/image_view"
+            <FrameLayout
+                android:id="@+id/child_fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

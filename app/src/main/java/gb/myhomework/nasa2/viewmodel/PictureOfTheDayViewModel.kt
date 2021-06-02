@@ -68,5 +68,4 @@ class PictureOfTheDayViewModel(
             .toString()
         return  newDate
     }
-
 }

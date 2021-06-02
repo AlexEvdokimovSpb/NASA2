@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
     private val fragments = arrayOf(
-        PictureOfTheDayFragment(TODAY),
-        PictureOfTheDayFragment(YESTERDAY),
-        PictureOfTheDayFragment(DAY_BEFORE_YESTERDAY)
+        PictureOfTheDayFragment.newInstance(TODAY),
+        PictureOfTheDayFragment.newInstance(YESTERDAY),
+        PictureOfTheDayFragment.newInstance(DAY_BEFORE_YESTERDAY)
     )
 
     override fun getItem(position: Int): Fragment {
