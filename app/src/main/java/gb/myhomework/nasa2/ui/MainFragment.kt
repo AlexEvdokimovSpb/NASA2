@@ -21,7 +21,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view_pager.adapter = ViewPagerAdapter(getChildFragmentManager())
+        view_pager.adapter = ViewPagerAdapter(childFragmentManager, this.requireContext())
         tab_layout.setupWithViewPager(view_pager)
 
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
