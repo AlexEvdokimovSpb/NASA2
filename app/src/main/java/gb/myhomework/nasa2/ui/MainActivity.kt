@@ -1,5 +1,6 @@
 package gb.myhomework.nasa2.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import gb.myhomework.nasa2.R
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.activity_api_bottom_container, SettingFragment())
                         .commit()
+                }
+                R.id.bottom_view_notes -> {
+                    val intent = Intent(this, RecyclerActivity::class.java)
+                    startActivity(intent)
+
                 }
                 else -> {
                     throw IllegalStateException("Got $item!")

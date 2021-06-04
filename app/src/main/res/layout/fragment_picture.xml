@@ -12,5 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/photo_of_the_day_stub"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_no_photo_vector" />
 </FrameLayout>
