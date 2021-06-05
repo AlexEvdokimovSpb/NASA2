@@ -19,4 +19,10 @@
     <string name="apod_video">видео</string>
     <string name="bye_earthlings">Пока земляне!</string>
     <string name="motion">движение</string>
+    <string name="notes">записки</string>
+    <string name="dog">Собака</string>
+    <string name="cat">Кошка</string>
+    <string name="cats_are_a_mammal_of_the_feline_family_of_the_order_of_carnivores">Кошки - млекопитающее семейства кошачьих отряда хищных</string>
+    <string name="dogs_placental_mammal_of_the_order_of_carnivores_of_the_canid_family">Cобаки — плацентарное млекопитающее отряда хищных семейства псовых.</string>
+    <string name="added_a_note">добавить заметку</string>
 </resources>

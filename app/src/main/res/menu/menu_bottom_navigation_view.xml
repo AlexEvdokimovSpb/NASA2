@@ -11,6 +11,11 @@
         android:title="@string/motion" />
 
     <item
+        android:id="@+id/bottom_view_notes"
+        android:icon="@drawable/ic_baseline_note_24"
+        android:title="@string/notes" />
+
+    <item
         android:id="@+id/bottom_view_settings"
         android:icon="@drawable/ic_settings_menu"
         android:title="@string/settings" />

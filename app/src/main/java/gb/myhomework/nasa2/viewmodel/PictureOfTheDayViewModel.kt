@@ -61,10 +61,11 @@ class PictureOfTheDayViewModel(
 
     private fun setData(delayDay: Int) : String {
         val today = GregorianCalendar()
+        today.add(GregorianCalendar.DAY_OF_MONTH, -delayDay)
         val newDate = StringBuilder() // Месяц отсчитывается с 0, поэтому добавляем 1
             .append(today.get(GregorianCalendar.YEAR)).append("-")
             .append(today.get(GregorianCalendar.MONTH) + 1).append("-")
-            .append(today.get(GregorianCalendar.DAY_OF_MONTH) - delayDay)
+            .append(today.get(GregorianCalendar.DAY_OF_MONTH))
             .toString()
         return  newDate
     }

@@ -12,7 +12,6 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import coil.api.load
 import gb.myhomework.nasa2.R
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_picture.*
 
