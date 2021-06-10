@@ -26,5 +26,9 @@
     <string name="cats_are_a_mammal_of_the_feline_family_of_the_order_of_carnivores">Cats are a mammal of the feline family of the order of carnivores</string>
     <string name="dogs_placental_mammal_of_the_order_of_carnivores_of_the_canid_family">Dogs — placental mammal of the order of carnivores of the canid family.</string>
     <string name="added_a_note">added a note</string>
+    <string name="title_activity_splash" translatable="false">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="nasa" translatable="false">NASA</string>
 
 </resources>
