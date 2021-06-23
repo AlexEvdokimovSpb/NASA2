@@ -12,7 +12,9 @@ import android.text.style.IconMarginSpan
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +27,7 @@ import gb.myhomework.nasa2.R
 import gb.myhomework.nasa2.model.repo.PictureOfTheDayData
 import gb.myhomework.nasa2.viewmodel.PictureOfTheDayViewModel
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+
 
 private const val DELAY = "delay"
 
@@ -54,11 +57,18 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
+
+        input_edit_text.setOnClickListener {
+            input_edit_text.setFocusable(true)
+            input_edit_text.setFocusableInTouchMode(true)
+        }
+
         activity?.let {
             bottom_sheet_title.typeface =
                 Typeface.createFromAsset(it.assets, "FranxurterTotallyFat.ttf")
