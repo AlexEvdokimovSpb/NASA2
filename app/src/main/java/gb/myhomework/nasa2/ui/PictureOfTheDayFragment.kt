@@ -1,14 +1,24 @@
 package gb.myhomework.nasa2.ui
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.IconMarginSpan
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +27,7 @@ import gb.myhomework.nasa2.R
 import gb.myhomework.nasa2.model.repo.PictureOfTheDayData
 import gb.myhomework.nasa2.viewmodel.PictureOfTheDayViewModel
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+
 
 private const val DELAY = "delay"
 
@@ -46,10 +57,27 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
+        }
+
+        input_edit_text.setOnClickListener {
+            input_edit_text.setFocusable(true)
+            input_edit_text.setFocusableInTouchMode(true)
+        }
+
+        activity?.let {
+            bottom_sheet_title.typeface =
+                Typeface.createFromAsset(it.assets, "FranxurterTotallyFat.ttf")
+            bottom_sheet_date.typeface =
+                Typeface.createFromAsset(it.assets, "FranxurterTotallyMedium.ttf")
+            bottom_sheet_copyright.typeface =
+                Typeface.createFromAsset(it.assets, "FranxurterTotallyFat.ttf")
+            bottom_sheet_explanation.typeface =
+                Typeface.createFromAsset(it.assets, "FranxurterTotallyMedium.ttf")
         }
 
         viewModel.getData(delayDay)
@@ -78,10 +106,10 @@ class PictureOfTheDayFragment : Fragment() {
                         )
                         .commit()
 
-                    bottom_sheet_title.text = serverResponseData.title
-                    bottom_sheet_date.text = serverResponseData.date
-                    bottom_sheet_copyright.text = serverResponseData.copyright
-                    bottom_sheet_explanation.text = serverResponseData.explanation
+                    titleSpan(bottom_sheet_title, serverResponseData.title)
+                    dateSpan(bottom_sheet_date, serverResponseData.date)
+                    copyrightSpan(bottom_sheet_copyright, serverResponseData.copyright)
+                    explanationSpan(bottom_sheet_explanation, serverResponseData.explanation)
                 }
             }
             is PictureOfTheDayData.Loading -> {
@@ -105,6 +133,97 @@ class PictureOfTheDayFragment : Fragment() {
             show()
         }
     }
+
+    fun titleSpan(textView: TextView, text: String?) {
+        if (text != null) {
+            val spannable = SpannableString(text)
+            spannable.setSpan(
+                IconMarginSpan(
+                    BitmapFactory.decodeResource(
+                        resources,
+                        R.drawable.icons8_tag_64
+                    ), 30
+                ), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            spannable.setSpan(
+                ForegroundColorSpan(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.colorAccent
+                    )
+                ),
+                0, text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = spannable
+        }
+    }
+
+    fun dateSpan(textView: TextView, text: String?) {
+        if (text != null) {
+            val spannable = SpannableString(text)
+            spannable.setSpan(
+                IconMarginSpan(
+                    BitmapFactory.decodeResource(
+                        resources,
+                        R.drawable.icons8_date_64
+                    ), 30
+                ), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            spannable.setSpan(
+                ForegroundColorSpan(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.colorAccent
+                    )
+                ),
+                0, text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = spannable
+        }
+    }
+
+    fun copyrightSpan(textView: TextView, text: String?) {
+        if (text != null) {
+            val spannable = SpannableString(text)
+            spannable.setSpan(
+                IconMarginSpan(
+                    BitmapFactory.decodeResource(
+                        resources,
+                        R.drawable.icons8_copyright_64
+                    ), 30
+                ), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            spannable.setSpan(
+                ForegroundColorSpan(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.colorAccent
+                    )
+                ),
+                0, text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = spannable
+        }
+    }
+
+    fun explanationSpan(textView: TextView, text: String?) {
+        if (text != null) {
+            val spannable = SpannableString(text)
+            spannable.setSpan(
+                IconMarginSpan(
+                    BitmapFactory.decodeResource(
+                        resources,
+                        R.drawable.icons8_telescope_50
+                    ), 0
+                ), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = spannable
+        }
+    }
+
 
     companion object {
         @JvmStatic
